@@ -1,0 +1,40 @@
+<h1>
+Payment Results
+</h1>
+
+<dl>
+  <dt>
+    APR
+  </dt>
+  <dd>
+    <% rate = params.fetch("rate_input").to_f %>
+    <%= rate.to_fs(:percentage, { :precision => 4 } )   %>
+  </dd>
+
+  <dt>
+    Number of years
+  </dt>
+  <dd>
+    <%=years = params.fetch("years_input").to_i %>
+  </dd>
+
+  <dt>
+    Principal
+  </dt>
+  <dd>
+    <%principal = params.fetch("principal_input").to_f %>
+    <%= principal.to_fs(:currency, { :precision => 2 }) %>
+  </dd>
+
+  <dt>
+    Payment
+  </dt>
+  <dd>
+    <% payment = (((rate/12)/100) * principal) / (1 - (1+rate/12/100)**-(years*12)).to_f   %>
+    <%= payment.to_fs(:currency, { :precision => 2 }) %>
+  </dd>
+</dl>
+
+<a href="/payment/new">
+  Calculate another payment
+</a>

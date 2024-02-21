@@ -1,0 +1,32 @@
+<h1>
+Random Results
+</h1>
+
+<dl>
+  <dt>
+    Minimum
+  </dt>
+  <dd>
+    <%=params.fetch("lower_input")%>
+  </dd>
+
+  <dt>
+    Maximum
+  </dt>
+  <dd>
+    <%=params.fetch("upper_input")%>  
+  </dd>
+
+  <dt>
+    Random Number
+  </dt>
+  <dd>
+    <%first = params.fetch("lower_input").to_f%>
+    <%second = params.fetch("upper_input").to_f%>
+    <%= rand(first..second).to_f %>
+  </dd>
+</dl>
+
+<a href="/random/new">
+  Pick another random number
+</a>
